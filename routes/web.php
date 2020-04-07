@@ -13,3 +13,8 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('/user/config', 'UserController@config')->middleware('auth');
+Route::put('/user/config', 'UserController@update')->middleware('auth');
+
+Route::get('/user/groups', 'UserController@getGroup')->middleware('auth');
