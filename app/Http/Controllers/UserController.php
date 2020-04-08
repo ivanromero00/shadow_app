@@ -12,17 +12,17 @@ class UserController extends Controller
 {
 
     public function getGroup(){
-        $user= Auth::user();
-        return view('groups', ['user'=>$user]);
+        $user = Auth::user();
+        return view('home', ['user'=>$user]);
     }
 
-    // Configuracion de datos personales
+    // Edit personal data
     public function config(){
         $user= Auth::user();
-        return view('update', ['user'=>$user]);
+        return view('updateUser', ['user'=>$user]);
     }
 
-    // Validacion formulario datos personales
+    // validate form edit personal data
     public function update($request, $id){
         $validate = $this->validate($request, [
             'name' => 'required|string|max:255',
@@ -36,5 +36,5 @@ class UserController extends Controller
         $user->email = $request->input('email');
 
         $user->save();
-    }  
+    }
 }

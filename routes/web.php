@@ -12,9 +12,17 @@
 */
 
 Auth::routes();
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'UserController@getGroup')->middleware('auth');
 
-Route::get('/user/config', 'UserController@config')->middleware('auth');
-Route::put('/user/config', 'UserController@update')->middleware('auth');
+Route::group(['prefix'=>'user', 'middleware'=>'auth'], function(){
+    Route::get('/config', 'UserController@config');
+    Route::put('/config', 'UserController@update');
+});
 
-Route::get('/user/groups', 'UserController@getGroup')->middleware('auth');
+Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){
+    Route::get('/create', 'GroupController@create');
+    Route::post('/create', 'GroupController@save');
+    Route::get('/config/{id}', 'GroupController@config');
+    Route::put('/config/{id}', 'GroupController@update');
+    Route::get('/delete/{id}', 'GroupController@delete');
+});
