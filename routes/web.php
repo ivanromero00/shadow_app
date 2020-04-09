@@ -25,4 +25,13 @@ Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){
     Route::get('/config/{id}', 'GroupController@config');
     Route::put('/config/{id}', 'GroupController@update');
     Route::get('/delete/{id}', 'GroupController@delete');
+    Route::get('/boards/{id}', 'GroupController@getBoards');
+});
+
+Route::group(['prefix'=>'board', 'middleware'=>'auth'], function(){
+    Route::get('/create/{id}', 'BoardController@create');
+    Route::post('/create', 'BoardController@save');
+    Route::get('/config/{id}', 'BoardController@config');
+    Route::put('/config/{id}', 'BoardController@update');
+    Route::get('/delete/{id}', 'BoardController@delete');
 });

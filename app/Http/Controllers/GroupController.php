@@ -52,9 +52,15 @@ class GroupController extends Controller
         return redirect()->action('UserController@getGroup');
     }
 
+    // delete group
     public function delete($id){
         $group = DB::table('groups')->where('id',$id)->delete();
 
         return redirect()->action('UserController@getGroup');
+    }
+
+    public function getBoards($id){
+        $group = Group::find($id);
+        return view('boards', ['group'=>$group]);
     }
 }
