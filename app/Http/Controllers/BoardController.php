@@ -51,4 +51,9 @@ class BoardController extends Controller
 
         return redirect()->action('GroupController@getBoards', ['group'=>$group_id->group_id]);
     }
+
+    public function getNotes($id){
+        $board = Board::find($id);
+        return view('notes', ['board'=>$board]);
+    }
 }

@@ -34,4 +34,13 @@ Route::group(['prefix'=>'board', 'middleware'=>'auth'], function(){
     Route::get('/config/{id}', 'BoardController@config');
     Route::put('/config/{id}', 'BoardController@update');
     Route::get('/delete/{id}', 'BoardController@delete');
+    Route::get('/notes/{id}', 'BoardController@getNotes');
+});
+
+Route::group(['prefix'=>'note', 'middleware'=>'auth'], function(){
+    Route::get('/create/{id}', 'NoteController@create');
+    Route::post('/create', 'NoteController@save');
+    Route::get('/config/{id}', 'NoteController@config');
+    Route::put('/config/{id}', 'NoteController@update');
+    Route::get('/delete/{id}', 'NoteController@delete');
 });

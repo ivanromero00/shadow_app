@@ -3,6 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
+        <a class="btn btn-primary mb-3" href=" {{ action('GroupController@create') }}" role="button">Crear</a>
+    </div>
+    <div class="row justify-content-center">
         <div class="card-deck">
             @foreach( $user->groups as $group )
             <div class="card">

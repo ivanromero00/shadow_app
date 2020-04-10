@@ -13,6 +13,6 @@ class Board extends Model
     }
 
     public function notes(){
-        return $this->hasMany('App\Note')->orderBy('id','desc');
+        return $this->hasMany('App\Notes')->orderBy('id','desc');
     }
 }
