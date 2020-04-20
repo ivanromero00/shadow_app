@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Auth;
 use App\User;
 use App\Group;
@@ -23,7 +25,7 @@ class UserController extends Controller
     }
 
     // validate form edit personal data
-    public function update($request, $id){
+    public function update(Request $request, $id){
         $validate = $this->validate($request, [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
@@ -35,6 +37,14 @@ class UserController extends Controller
         $user->surname = $request->input('surname');
         $user->email = $request->input('email');
 
+        $image_path = $request->file('image_path');
+        if($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('users')->put($image_path_name, File::get($image_path));
+            $user->image_path = $image_path_name;
+        }
+
         $user->save();
+        return view('home', ['user'=>$user]);
     }
 }

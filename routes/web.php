@@ -16,7 +16,7 @@ Route::get('/', 'UserController@getGroup')->middleware('auth');
 
 Route::group(['prefix'=>'user', 'middleware'=>'auth'], function(){
     Route::get('/config', 'UserController@config');
-    Route::put('/config', 'UserController@update');
+    Route::put('/config/{id}', 'UserController@update');
 });
 
 Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){

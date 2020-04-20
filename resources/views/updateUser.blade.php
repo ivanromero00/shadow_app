@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Update') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ action('UserController@update', ['id' => $user->id]) }}">
+                    <form method="POST" action="{{ action('UserController@update', ['id' => $user->id]) }}" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
                         @csrf
 
@@ -59,7 +59,7 @@
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Image_path') }}</label>
 
                             <div class="col-md-6">
-                                <input id="image_path"  type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path" accept="image/*">
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path" accept="image/*">
 
                                 @error('image_path')
                                     <span class="invalid-feedback" role="alert">
