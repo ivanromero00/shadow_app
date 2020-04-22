@@ -17,6 +17,7 @@ Route::get('/', 'UserController@getGroup')->middleware('auth');
 Route::group(['prefix'=>'user', 'middleware'=>'auth'], function(){
     Route::get('/config', 'UserController@config');
     Route::put('/config/{id}', 'UserController@update');
+    Route::get('/avatar/{filename}', 'UserController@getAvatar');
 });
 
 Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){
@@ -43,4 +44,5 @@ Route::group(['prefix'=>'note', 'middleware'=>'auth'], function(){
     Route::get('/config/{id}', 'NoteController@config');
     Route::put('/config/{id}', 'NoteController@update');
     Route::get('/delete/{id}', 'NoteController@delete');
+    Route::get('/image/{filename}', 'NoteController@getImage');
 });

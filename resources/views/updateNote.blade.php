@@ -9,7 +9,7 @@
                 <div class="card-header">{{ __('Update') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ action('NoteController@update', ['id' => $note->id]) }}">
+                    <form method="POST" action="{{ action('NoteController@update', ['id' => $note->id]) }}" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
                         @csrf
 
@@ -20,6 +20,17 @@
                         <div class="form-group">
                             <label for="content">Contenido</label>
                             <textarea class="form-control" id="content" name="content" rows="3">{{ $note->content }}</textarea>
+                        </div>
+                        <div class="form-group row">
+                            <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
+                            <div class="col-md-6">
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path" accept="image/*">
+                                @error('image_path')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Editar</button>
                     </form>

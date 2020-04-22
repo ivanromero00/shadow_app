@@ -24,6 +24,10 @@ class UserController extends Controller
         return view('updateUser', ['user'=>$user]);
     }
 
+    public function getAvatar($filename){
+        return Storage::disk('users')->get($filename);
+    }
+
     // validate form edit personal data
     public function update(Request $request, $id){
         $validate = $this->validate($request, [

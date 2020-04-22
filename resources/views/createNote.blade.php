@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <form method="POST" action="{{ action('NoteController@save') }}">
+        <form method="POST" action="{{ action('NoteController@save') }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{ $board->id }}">
             <div class="form-group">

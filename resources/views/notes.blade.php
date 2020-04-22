@@ -10,6 +10,9 @@
             @foreach( $board->notes as $note )
             <div class="card">
                 <div class="card-body">
+                    @if($note->image_path != 'clean')
+                        <img src="{{ action('NoteController@getImage', ['filename' => $note->image_path]) }}" alt="avatar">
+                    @endif
                     <h5 class="card-title">{{ $note->title }}</h5>
                     <p class="card-text">{{ $note->content }}</p>
                     <a class="btn btn-danger" href=" {{ action('NoteController@delete', ['id' => $note->id]) }}" role="button">Borrar</a>

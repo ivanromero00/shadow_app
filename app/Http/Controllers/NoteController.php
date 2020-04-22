@@ -23,7 +23,7 @@ class NoteController extends Controller
             'board_id' => $request->input('id'),
             'title' => $request->input('title'),
             'content' => $request->input('content'),
-            'image_path' => 'asdfasdf'
+            'image_path' => 'clean'
         ));
 
         return redirect()->action('BoardController@getNotes', ['board'=>$request->input('id')]);
@@ -43,9 +43,19 @@ class NoteController extends Controller
         $note = Notes::find($id);
         $note->title = $request->input('title');
         $note->content = $request->input('content');
+        $image_path = $request->file('image_path');
+        if($image_path){
+            $image_path_name = time().$image_path->getClientOriginalName();
+            Storage::disk('notes')->put($image_path_name, File::get($image_path));
+            $note->image_path = $image_path_name;
+        }
 
         $note->save();
         return redirect()->action('BoardController@getNotes', ['note'=>$note->board_id]);
+    }
+
+    public function getImage($filename){
+        return Storage::disk('notes')->get($filename);
     }
 
     public function delete($id){
