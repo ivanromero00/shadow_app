@@ -59,8 +59,29 @@ class GroupController extends Controller
         return redirect()->action('UserController@getGroup');
     }
 
+    // get group's boards
     public function getBoards($id){
         $group = Group::find($id);
         return view('boards', ['group'=>$group]);
+    }
+
+    // add user to group
+    public function add($id){
+        $group = Group::find($id);
+        return view('adduser', ['group'=>$group]);
+    }
+
+    public function adduser(Request $request){
+        $user = DB::table('users')->where('email', $request->input('email'))->first();
+        if($user == NULL){
+            return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Usuario no encontrado');
+        }
+
+        $group = Group::find($request->input('id'));
+        $relationship = DB::table('group_user')->insert(array(
+            'user_id' => $user->id,
+            'group_id' => $group->id
+        ));
+        return redirect()->route('add', ['id' => $request->input('id')])->with('user', 'Usuario añadido correctamente');
     }
 }

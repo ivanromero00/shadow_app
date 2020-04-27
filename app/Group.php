@@ -10,7 +10,7 @@ class Group extends Model
 
     public function users()
     {
-        return $this->hasMany('App\User')->orderBy('id', 'desc');
+        return $this->belongsToMany('App\User')->orderBy('id', 'asc');
     }
 
     public function boards(){

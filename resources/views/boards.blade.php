@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <a class="btn btn-primary mb-3" href=" {{ action('BoardController@create', ['id' => $group->id]) }}" role="button">Crear</a>
+        <a class="btn btn-primary mb-3" href=" {{ action('GroupController@add', ['id' => $group->id]) }}" role="button">Añadir</a>
     </div>
     <div class="row justify-content-center">
         <div class="card-deck">
