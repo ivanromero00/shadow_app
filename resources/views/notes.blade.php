@@ -3,20 +3,24 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <a class="btn btn-primary mb-3" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Crear</a>
+        <h4 class="lcolordark mt-1 col-3">{{$board->name}}  >  Notas</h4>
+        <div class="col-8"></div>
+        <a class="btn btn-primary mb-3 col-1" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Crear</a>
     </div>
-    <div class="row justify-content-center">
-        <div class="card-deck">
+    <div class="row">
+        <div class="card-deck col-10">
             @foreach( $board->notes as $note )
-            <div class="card">
-                <div class="card-body">
-                    @if($note->image_path != 'clean')
-                        <img src="{{ action('NoteController@getImage', ['filename' => $note->image_path]) }}" alt="avatar">
-                    @endif
-                    <h5 class="card-title">{{ $note->title }}</h5>
-                    <p class="card-text">{{ $note->content }}</p>
-                    <a class="btn btn-danger" href=" {{ action('NoteController@delete', ['id' => $note->id]) }}" role="button">Borrar</a>
-                    <a class="btn btn-warning" href=" {{ action('NoteController@config', ['id' => $note->id]) }}" role="button">Editar</a>
+            <div class="col-md-3 col-sm-2 p-0 mb-3">
+                <div class="card text-center" style="width: 13rem;">
+                    <div class="card-body pcolor">
+                        @if($note->image_path != 'clean')
+                            <img src="{{ action('NoteController@getImage', ['filename' => $note->image_path]) }}" alt="avatar" class="card-img-top">
+                        @endif
+                        <h5 class="card-title text-white mt-2">{{ $note->title }}</h5>
+                        <p class="card-text text-white">{{ $note->content }}</p>
+                        <a class="btn" href=" {{ action('NoteController@delete', ['id' => $note->id]) }}" role="button"><img src="{{ asset('img/btn-delete.png') }}" alt="delete"></a>
+                        <a class="btn" href=" {{ action('NoteController@config', ['id' => $note->id]) }}" role="button"><img src="{{ asset('img/btn-edit.png') }}" alt="edit"></a>
+                    </div>
                 </div>
             </div>
             @endforeach
