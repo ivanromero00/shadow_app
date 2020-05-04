@@ -72,7 +72,10 @@ class GroupController extends Controller
     }
 
     public function adduser(Request $request){
-        $user = DB::table('users')->where('email', $request->input('email'))->first();
+        if($request->input('email')){
+            $email = $request->input('email');
+        }
+        $user = DB::table('users')->where('email', $email)->first();
         if($user == NULL){
             return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Usuario no encontrado');
         }

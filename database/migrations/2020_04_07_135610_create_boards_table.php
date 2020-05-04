@@ -17,7 +17,7 @@ class CreateBoardsTable extends Migration
             $table->increments('id');
             $table->Integer('group_id')->unsigned();
             $table->string('name');
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->foreign('group_id')->references('id')->on('groups');
             $table->timestamps();
         });
