@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div>
-        <form method="POST" action="{{ action('GroupController@adduser') }}">
+        <form method="POST" action="{{ action('GroupController@usersearch', ['id' => $group->id]) }}">
             @csrf
             @if (session('error'))
                 <div class="alert alert-warning">
@@ -33,10 +33,10 @@
                     <small id="surname" class="form-text text-muted">Apellidos del usuario</small>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary justify-content-center">Añadir</button>
+            <button type="submit" class="btn btn-primary justify-content-center"><img src="{{ asset('img/btn-search.png') }}" alt="delete"></button>
         </form>
     </div>
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-3">
         <table class="table">
             <thead>
                 <tr>

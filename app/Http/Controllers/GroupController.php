@@ -71,7 +71,52 @@ class GroupController extends Controller
         return view('adduser', ['group'=>$group]);
     }
 
-    public function adduser(Request $request){
+    public function usersearch(Request $request, $id){
+        $group = Group::find($id);
+        $email = $request->input('email');
+        $name = $request->input('name');
+        $surname = $request->input('surname');
+
+        if($email){
+            $user = User::where('email', $email)->first();
+            if($user == NULL){
+                return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
+            }
+            return view('userlist', ['group'=>$group, 'user'=>$user])->with('single', 'user');
+        }
+
+        if($name && $surname==""){
+            $user = User::where('name', $name)->get();
+            if(count($user) == 0){
+                return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
+            }
+            return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
+        }
+
+        if($surname && $name==""){
+            $user = User::where('surname', $surname)->get();
+            if(count($user) == 0){
+                return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
+            }
+            return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
+        }
+
+        if($surname && $name){
+            $user = User::where('name', $name)->where('surname', $surname)->get();
+            if(count($user) == 0){
+                return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
+            }
+            return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
+        }
+
+        
+        if($email == NULL && $name == NULL && $surname == NULL){
+            return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Error de busqueda. Por favor introduzca alguno de los campos.');
+        }
+
+    }
+    
+    /* public function adduser(Request $request){
         if($request->input('email')){
             $email = $request->input('email');
         }
@@ -86,5 +131,5 @@ class GroupController extends Controller
             'group_id' => $group->id
         ));
         return redirect()->route('add', ['id' => $request->input('id')])->with('user', 'Usuario añadido correctamente');
-    }
+    } */
 }
