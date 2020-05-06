@@ -20,7 +20,7 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->surname }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>Añadir</td>
+                        <td><a class="btn mb-2" href=" {{ route('adduser', ['id_user' => $user->id, 'id_group' => $group->id]) }}" role="button"><img src="{{ asset('img/btn-add.png') }}" alt="add"></a></td>
                     </tr>
                 @endisset
                 @isset ($multiple)
@@ -30,7 +30,7 @@
                             <td>{{ $u->name }}</td>
                             <td>{{ $u->surname }}</td>
                             <td>{{ $u->email }}</td>
-                            <td>Boton</td>
+                            <td><a class="btn mb-2" href=" {{ route('adduser', ['id_user' => $u->id, 'id_group' => $group->id]) }}" role="button"><img src="{{ asset('img/btn-add.png') }}" alt="add"></a></td>
                         </tr>
                     @endforeach
                 @endisset

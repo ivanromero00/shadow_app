@@ -29,6 +29,7 @@ Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){
     Route::get('/boards/{id}', 'GroupController@getBoards');
     Route::get('/add/{id}', 'GroupController@add')->name('add');
     Route::post('/userlist/{id}', 'GroupController@usersearch')->name('userlist');
+    Route::get('/adduser/{id_user}/{id_group}', 'GroupController@adduser')->name('adduser');
 });
 
 Route::group(['prefix'=>'board', 'middleware'=>'auth'], function(){

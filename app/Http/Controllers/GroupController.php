@@ -116,20 +116,11 @@ class GroupController extends Controller
 
     }
     
-    /* public function adduser(Request $request){
-        if($request->input('email')){
-            $email = $request->input('email');
-        }
-        $user = DB::table('users')->where('email', $email)->first();
-        if($user == NULL){
-            return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Usuario no encontrado');
-        }
-
-        $group = Group::find($request->input('id'));
+    public function adduser($id_user, $id_group){
         $relationship = DB::table('group_user')->insert(array(
-            'user_id' => $user->id,
-            'group_id' => $group->id
+            'user_id' => $id_user,
+            'group_id' => $id_group
         ));
-        return redirect()->route('add', ['id' => $request->input('id')])->with('user', 'Usuario añadido correctamente');
-    } */
+        return redirect()->route('add', ['id' => $id_group])->with('user', 'Usuario añadido correctamente');
+    }
 }
