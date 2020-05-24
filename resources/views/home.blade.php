@@ -4,13 +4,13 @@
 <div class="container">
     <div class="row justify-content-center">
         <h4 class="lcolordark mt-1 col-2">Grupos</h4>
-        <div class="col-9"></div>
-        <a class="btn btn-primary col-1" href=" {{ action('GroupController@create') }}" role="button">Crear</a>
+        <div class="col-md-9"></div>
+        <a class="btn btn-primary col-md-1 col-sm-2" href=" {{ action('GroupController@create') }}" role="button">Crear</a>
     </div>
     <div class="row mt-3">
         <div class="card-deck col-10">
             @foreach( $user->groups as $group )
-            <div class="col-md-3 col-sm-2 p-0 mb-3">
+            <div class="col-md-3 p-0 mb-3">
                 <div class="card text-center" style="width: 13rem;">
                     <div class="card-body pcolor">
                         <a href="{{ action('GroupController@getBoards', ['id' => $group->id]) }}"><h5 class="card-title text-white">{{ $group->name }}</h5></a>

@@ -3,12 +3,12 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <h4 class="lcolordark mt-1 col-3">{{$group->name}}  >  Tableros</h4>
-        <div class="col-8"></div>
-        <a class="btn btn-primary mb-3 col-1" href=" {{ action('BoardController@create', ['id' => $group->id]) }}" role="button">Crear</a>
+        <h4 class="lcolordark mt-1 col-md-3 col-sm-12">{{$group->name}}  >  Tableros</h4>
+        <div class="col-md-8"></div>
+        <a class="btn btn-primary mb-3 col-md-1 col-sm-2" href=" {{ action('BoardController@create', ['id' => $group->id]) }}" role="button">Crear</a>
     </div>
     <div class="row">
-        <div class="card-deck col-10">
+        <div class="card-deck col-md-10 col-sm-12">
             @foreach( $group->boards as $board )
             <div class="col-md-3 col-sm-2 p-0 mb-3">
                 <div class="card text-center" style="width: 13rem;">
@@ -23,7 +23,7 @@
             </div>
             @endforeach
         </div>
-        <div class="col-2 border border-dark rounded text-center">
+        <div class="col-md-2 col-sm-12 border border-dark rounded text-center">
             <table class="table">
                 <thead>
                     <tr>
