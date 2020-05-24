@@ -17,7 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('surname');
-            $table->string('image_path')->default('https://image.flaticon.com/icons/svg/21/21104.svg');
+            $table->string('image_path')->default('defecto');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
