@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <h1>UPDATEEEE</h1>
+    <h1>Configuración de cuenta</h1>
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -28,12 +28,12 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="surname" class="col-md-4 col-form-label text-md-right">{{ __('Surname') }}</label>
+                            <label for="nick" class="col-md-4 col-form-label text-md-right">{{ __('Nick') }}</label>
 
                             <div class="col-md-6">
-                                <input id="surname" type="text" class="form-control @error('surname') is-invalid @enderror" name="surname" value="{{ $user->surname }}" required autocomplete="surname" autofocus>
+                                <input id="nick" type="text" class="form-control @error('nick') is-invalid @enderror" name="nick" value="{{ $user->nick }}" required autocomplete="nick" autofocus>
 
-                                @error('surname')
+                                @error('nick')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -58,7 +58,7 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Image_path') }}</label>
                             <div class="col-md-6">
-                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path" accept="image/*">
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" autocomplete="image_path" accept="image/*">
                                 @error('image_path')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>

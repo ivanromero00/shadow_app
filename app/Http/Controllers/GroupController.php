@@ -18,9 +18,17 @@ class GroupController extends Controller
 
     //validate form create group
     public function save(Request $request){
-        $group = DB::table('groups')->insert(array(
-            'name' => $request->input('name')
-        ));
+        if($request->has('public')){
+            $group = DB::table('groups')->insert(array(
+                'name' => $request->input('name'),
+                'public' => $request->input('public')
+            ));
+        } else {
+            $group = DB::table('groups')->insert(array(
+                'name' => $request->input('name'),
+                'public' => 0
+            ));
+        }
 
         $group = DB::table('groups')->where('name',$request->input('name'))->first();
 
@@ -75,7 +83,7 @@ class GroupController extends Controller
         $group = Group::find($id);
         $email = $request->input('email');
         $name = $request->input('name');
-        $surname = $request->input('surname');
+        $nick = $request->input('nick');
 
         if($email){
             $user = User::where('email', $email)->first();
@@ -85,7 +93,7 @@ class GroupController extends Controller
             return view('userlist', ['group'=>$group, 'user'=>$user])->with('single', 'user');
         }
 
-        if($name && $surname==""){
+        if($name && $nick==""){
             $user = User::where('name', $name)->get();
             if(count($user) == 0){
                 return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
@@ -93,16 +101,16 @@ class GroupController extends Controller
             return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
         }
 
-        if($surname && $name==""){
-            $user = User::where('surname', $surname)->get();
+        if($nick && $name==""){
+            $user = User::where('nick', $nick)->get();
             if(count($user) == 0){
                 return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
             }
             return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
         }
 
-        if($surname && $name){
-            $user = User::where('name', $name)->where('surname', $surname)->get();
+        if($nick && $name){
+            $user = User::where('name', $name)->where('nick', $nick)->get();
             if(count($user) == 0){
                 return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
             }
@@ -110,7 +118,7 @@ class GroupController extends Controller
         }
 
         
-        if($email == NULL && $name == NULL && $surname == NULL){
+        if($email == NULL && $name == NULL && $nick == NULL){
             return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Error de busqueda. Por favor introduzca alguno de los campos.');
         }
 

@@ -51,6 +51,17 @@
                             @endif
                         @else
                             @if (Auth::user()->image_path == 'defecto')
+                            <div class="mr-4">
+                                    <form method="POST" action="{{ action('UserController@usersearch') }}">
+                                    @csrf
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-white pcolordark">Nick</span>
+                                            </div>
+                                            <input type="text" aria-label="nick" class="form-control pcolordark" name="nick">
+                                        </div>
+                                    </form>
+                                </div>
                                 <img src="{{ asset('img/perfildeusuario.jpg') }}" alt="avatar" width="45 px" class="rounded-circle">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -73,6 +84,18 @@
                                     </div>
                                 </li>
                             @else
+                                <!-- ERROOOOOOOOR -->
+                                <div class="mr-4">
+                                    <form method="POST" action="{{ action('UserController@usersearch') }}">
+                                    @csrf
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text text-white pcolordark">Nick</span>
+                                            </div>
+                                            <input type="text" aria-label="nick" class="form-control pcolordark" name="nick">
+                                        </div>
+                                    </form>
+                                </div>
                                 <img src="{{ action('UserController@getAvatar', ['filename' => Auth::user()->image_path]) }}" alt="avatar" width="45 px" class="rounded-circle">
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

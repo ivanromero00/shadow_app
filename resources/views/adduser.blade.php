@@ -28,9 +28,9 @@
                     <small id="name" class="form-text text-muted">Nombre del usuario</small>
                 </div>
                 <div class="form-group">
-                    <label for="surname">Apellidos</label>
-                    <input name='surname' type="text" class="form-control" id="surname" aria-describedby="surname">
-                    <small id="surname" class="form-text text-muted">Apellidos del usuario</small>
+                    <label for="surname">Nickname</label>
+                    <input name='surname' type="text" class="form-control" id="nick" aria-describedby="nick">
+                    <small id="nick" class="form-text text-muted">Nickname</small>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary justify-content-center"><img src="{{ asset('img/btn-search.png') }}" alt="delete"></button>
@@ -42,7 +42,7 @@
                 <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
+                <th scope="col">Nick</th>
                 <th scope="col">Email</th>
                 </tr>
             </thead>
@@ -51,7 +51,7 @@
                     <tr>
                         <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
-                        <td>{{ $user->surname }}</td>
+                        <td>{{ $user->nick }}</td>
                         <td>{{ $user->email }}</td>
                     </tr>
                 @endforeach

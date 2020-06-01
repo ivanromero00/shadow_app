@@ -33,7 +33,7 @@
                 <tbody>
                     @foreach( $group->users as $user )
                     <tr>
-                        <td>{{ $user->email }}</td>
+                        <td>{{ $user->nick }}</td>
                     </tr>
                     @endforeach
                 </tbody>

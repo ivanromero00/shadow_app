@@ -18,6 +18,8 @@ Route::group(['prefix'=>'user', 'middleware'=>'auth'], function(){
     Route::get('/config', 'UserController@config');
     Route::put('/config/{id}', 'UserController@update');
     Route::get('/avatar/{filename}', 'UserController@getAvatar');
+    Route::post('/profile', 'UserController@usersearch');
+
 });
 
 Route::group(['prefix'=>'group', 'middleware'=>'auth'], function(){
