@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <h4 class="lcolordark mt-1 col-2">Grupos</h4>
-        <div class="col-md-9"></div>
-        <a class="btn btn-primary col-md-1 col-sm-2" href=" {{ action('GroupController@create') }}" role="button">Crear</a>
+        <div class="col-md-8"></div>
+        <a class="btn btn-primary col-md-2 col-sm-3" href=" {{ action('GroupController@create') }}" role="button">Nuevo Grupo</a>
     </div>
     <div class="row mt-3">
         <div class="card-deck col-10">

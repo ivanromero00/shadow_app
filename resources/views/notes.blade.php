@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <h4 class="lcolordark mt-1 col-md-3 col-sm-12">{{$board->name}}  >  Notas</h4>
         <div class="col-md-8"></div>
-        <a class="btn btn-primary mb-3 col-md-1 col-sm-12" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Crear</a>
+        <a class="btn btn-primary mb-3 col-md-1 col-sm-12" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Nueva nota</a>
     </div>
     <div class="row">
         <div class="card-deck col-10">
