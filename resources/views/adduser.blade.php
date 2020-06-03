@@ -29,18 +29,17 @@
                 </div>
                 <div class="form-group">
                     <label for="surname">Nickname</label>
-                    <input name='surname' type="text" class="form-control" id="nick" aria-describedby="nick">
+                    <input name='nick' type="text" class="form-control" id="nick" aria-describedby="nick">
                     <small id="nick" class="form-text text-muted">Nickname</small>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary justify-content-center"><img src="{{ asset('img/btn-search.png') }}" alt="delete"></button>
+            <button type="submit" class="btn btn-primary justify-content-center"><img src="{{ asset('img/btn-search.png') }}" alt="search"></button>
         </form>
     </div>
     <div class="row justify-content-center mt-3">
         <table class="table">
             <thead>
                 <tr>
-                <th scope="col">#</th>
                 <th scope="col">Nombre</th>
                 <th scope="col">Nick</th>
                 <th scope="col">Email</th>
@@ -49,7 +48,6 @@
             <tbody>
                 @foreach( $group->users as $user )
                     <tr>
-                        <th scope="row">{{ $user->id }}</th>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->nick }}</td>
                         <td>{{ $user->email }}</td>

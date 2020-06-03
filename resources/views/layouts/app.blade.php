@@ -84,7 +84,6 @@
                                     </div>
                                 </li>
                             @else
-                                <!-- ERROOOOOOOOR -->
                                 <div class="mr-4">
                                     <form method="POST" action="{{ action('UserController@usersearch') }}">
                                     @csrf

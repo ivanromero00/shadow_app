@@ -12,7 +12,7 @@
 */
 
 Auth::routes();
-Route::get('/', 'UserController@getGroup')->middleware('auth');
+Route::get('/', 'UserController@getGroup')->middleware('auth')->name('home');
 
 Route::group(['prefix'=>'user', 'middleware'=>'auth'], function(){
     Route::get('/config', 'UserController@config');

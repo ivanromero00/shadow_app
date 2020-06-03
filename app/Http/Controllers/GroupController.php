@@ -100,23 +100,14 @@ class GroupController extends Controller
             }
             return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
         }
-
-        if($nick && $name==""){
+        
+        if($nick && $name=="" || $nick && $name){
             $user = User::where('nick', $nick)->get();
             if(count($user) == 0){
                 return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
             }
-            return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
+            return view('userlist', ['group'=>$group, 'user'=>$user])->with('single', 'user');
         }
-
-        if($nick && $name){
-            $user = User::where('name', $name)->where('nick', $nick)->get();
-            if(count($user) == 0){
-                return redirect()->route('add', ['id' => $group])->with('error', 'Usuario no encontrado');
-            }
-            return view('userlist', ['group'=>$group, 'user'=>$user])->with('multiple', 'users');
-        }
-
         
         if($email == NULL && $name == NULL && $nick == NULL){
             return redirect()->route('add', ['id' => $request->input('id')])->with('error', 'Error de busqueda. Por favor introduzca alguno de los campos.');
