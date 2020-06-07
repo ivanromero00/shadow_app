@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class userSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,38 +13,24 @@ class userSeeder extends Seeder
     {
         $this->arrayUsers = array(
             array(
-                'name' => 'Juan',
-                'surnames' => 'Gomez Lopez',
-                'image_path' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
-                'email' => 'juangomezlopez@gmail.com',
+                'name' => 'Ivan',
+                'nick' => 'ivanro',
+                'image_path' => 'defecto',
+                'email' => 'ivan@gmail.com',
                 'password' => 'pestillo',
             ),
             array(
-                'name' => 'Borja',
-                'surnames' => 'Fernandez Perez',
-                'image_path' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
-                'email' => 'borjafernandezperez@gmail.com',
+                'name' => 'pepe',
+                'nick' => 'pepelu',
+                'image_path' => 'defecto',
+                'email' => 'pepe@gmail.com',
                 'password' => 'pestillo',
             ),
             array(
-                'name' => 'Laura',
-                'surnames' => 'Rodriguez Baron',
-                'image_path' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
-                'email' => 'laurarodriguezbaron@gmail.com',
-                'password' => 'pestillo',
-            ),
-            array(
-                'name' => 'Ana',
-                'surnames' => 'Reyna Flores',
-                'image_path' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
-                'email' => 'anareynaflores@gmail.com',
-                'password' => 'pestillo',
-            ),
-            array(
-                'name' => 'Jose',
-                'surnames' => 'Casas Mena',
-                'image_path' => 'https://image.flaticon.com/icons/svg/21/21104.svg',
-                'email' => 'josecasasmena@gmail.com',
+                'name' => 'pepe',
+                'nick' => 'pepito',
+                'image_path' => 'defecto',
+                'email' => 'pepito@gmail.com',
                 'password' => 'pestillo',
             )
         );
@@ -53,7 +39,7 @@ class userSeeder extends Seeder
         foreach( $this->arrayUsers as $user ) {
             $p = new User;
             $p->name = $user['name'];
-            $p->surnames = $user['surnames'];
+            $p->nick = $user['nick'];
             $p->image_path = $user['image_path'];
             $p->email = $user['email'];
             $p->password = $user['password'];

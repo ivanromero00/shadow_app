@@ -8,10 +8,10 @@
         <a class="btn btn-primary col-md-2 col-sm-3" href=" {{ action('GroupController@create') }}" role="button">Nuevo Grupo</a>
     </div>
     <div class="row mt-3">
-        <div class="card-deck col-10">
+        <div class="card-deck col-12">
             @foreach( $user->groups as $group )
-            <div class="col-md-3 p-0 mb-3">
-                <div class="card text-center" style="width: 13rem;">
+            <div class="col-md-3 col-sm-6 p-0 mb-3">
+                <div class="card text-center mx-auto" style="width: 14rem;">
                     <div class="card-body pcolor">
                         <a href="{{ action('GroupController@getBoards', ['id' => $group->id]) }}"><h5 class="card-title text-white">{{ $group->name }}</h5></a>
                         <a class="btn" href=" {{ action('GroupController@delete', ['id' => $group->id]) }}" role="button"><img src="{{ asset('img/btn-delete.png') }}" alt="delete"></a>
@@ -21,7 +21,6 @@
             </div>
             @endforeach
         </div>
-        <div class="col-2"></div>
     </div>
 </div>
 @endsection

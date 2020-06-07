@@ -11,7 +11,7 @@
         <div class="card-deck col-md-10 col-sm-12">
             @foreach( $group->boards as $board )
             <div class="col-md-3 col-sm-6 p-0 mb-3">
-                <div class="card text-center h-100" style="width: 13rem;">
+                <div class="card text-center h-100 mx-auto" style="width: 13rem;">
                     <div class="card-body pcolor">
                         <a href="{{ action('BoardController@getNotes', ['id' => $board->id]) }}" class=""><h5 class="card-title text-white text-decoration-none">{{ $board->name }}</h5></a>
                         <p class="card-text text-white">{{ $board->description }}</p>

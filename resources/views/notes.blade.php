@@ -8,10 +8,10 @@
         <a class="btn btn-primary mb-3 col-md-1 col-sm-12" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Nueva nota</a>
     </div>
     <div class="row">
-        <div class="card-deck col-10">
+        <div class="card-deck col-12">
             @foreach( $board->notes as $note )
-            <div class="col-md-3 col-sm-2 p-0 mb-3">
-                <div class="card text-center" style="width: 13rem;">
+            <div class="col-md-3 col-sm-6 p-0 mb-3">
+                <div class="card text-center mx-auto" style="width: 13rem;">
                     <div class="card-body pcolor">
                         @if($note->image_path != 'clean')
                             <img src="{{ action('NoteController@getImage', ['filename' => $note->image_path]) }}" alt="avatar" class="card-img-top">
