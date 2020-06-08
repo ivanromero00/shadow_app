@@ -54,6 +54,7 @@ class BoardController extends Controller
 
     public function getNotes($id){
         $board = Board::find($id);
-        return view('notes', ['board'=>$board]);
+        $group = Group::find($board->group_id);
+        return view('notes', ['board'=>$board, 'group'=>$group]);
     }
 }

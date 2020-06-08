@@ -40,7 +40,7 @@ Route::group(['prefix'=>'board', 'middleware'=>'auth'], function(){
     Route::get('/config/{id}', 'BoardController@config');
     Route::put('/config/{id}', 'BoardController@update');
     Route::get('/delete/{id}', 'BoardController@delete');
-    Route::get('/notes/{id}', 'BoardController@getNotes');
+    Route::get('/notes/{id}/{group}', 'BoardController@getNotes');
 });
 
 Route::group(['prefix'=>'note', 'middleware'=>'auth'], function(){
