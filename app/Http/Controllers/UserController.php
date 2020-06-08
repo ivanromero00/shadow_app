@@ -47,9 +47,8 @@ class UserController extends Controller
             Storage::disk('users')->put($image_path_name, File::get($image_path));
             $user->image_path = $image_path_name;
         }
-
         $user->save();
-        return view('home', ['user'=>$user]);
+        return redirect()->route('home')->with('home', ['user'=>$user]);
     }
 
     public function usersearch(Request $request){
