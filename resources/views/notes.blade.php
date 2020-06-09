@@ -10,7 +10,7 @@
             @if($g->pivot->user_id == Auth::user()->id)
             <h4 class="lcolordark mt-1 col-md-3 col-sm-12">{{$board->name}}  >  Notas</h4>
             <div class="col-md-8"></div>
-            <a class="btn btn-primary mb-3 col-md-1 col-sm-12" href=" {{ action('NoteController@create', ['id' => $board->id]) }}" role="button">Nueva nota</a>
+            <a class="btn btn-primary mb-3 col-md-1 col-sm-12" href=" {{ action('NoteController@create', ['id' => $board->id, 'group'=>$group->id]) }}" role="button">Nueva nota</a>
                 @break
             @else
                 {{$flag = False}}
@@ -33,8 +33,8 @@
                         <h5 class="card-title text-white mt-2">{{ $note->title }}</h5>
                         <p class="card-text text-white">{{ $note->content }}</p>
                         @if($flag)
-                            <a class="btn" href=" {{ action('NoteController@delete', ['id' => $note->id]) }}" role="button"><img src="{{ asset('img/btn-delete.png') }}" alt="delete"></a>
-                            <a class="btn" href=" {{ action('NoteController@config', ['id' => $note->id]) }}" role="button"><img src="{{ asset('img/btn-edit.png') }}" alt="edit"></a>
+                            <a class="btn" href=" {{ action('NoteController@delete', ['id' => $note->id, 'group'=>$group->id]) }}" role="button"><img src="{{ asset('img/btn-delete.png') }}" alt="delete"></a>
+                            <a class="btn" href=" {{ action('NoteController@config', ['id' => $note->id, 'group'=>$group->id]) }}" role="button"><img src="{{ asset('img/btn-edit.png') }}" alt="edit"></a>
                         @endif
                     </div>
                 </div>

@@ -44,7 +44,7 @@ Route::group(['prefix'=>'board', 'middleware'=>'auth'], function(){
 });
 
 Route::group(['prefix'=>'note', 'middleware'=>'auth'], function(){
-    Route::get('/create/{id}', 'NoteController@create');
+    Route::get('/create/{id}/{grupo}', 'NoteController@create');
     Route::post('/create', 'NoteController@save');
     Route::get('/config/{id}', 'NoteController@config');
     Route::put('/config/{id}', 'NoteController@update');

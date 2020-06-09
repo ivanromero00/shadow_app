@@ -12,7 +12,6 @@
                     <form method="POST" action="{{ action('NoteController@update', ['id' => $note->id]) }}" enctype="multipart/form-data">
                         {{ method_field('PUT') }}
                         @csrf
-
                         <div class="form-group">
                             <label for="title">Titulo</label>
                             <input name='title' type="text" class="form-control" id="title" aria-describedby="title" value="{{ $note->title }}">
@@ -24,7 +23,7 @@
                         <div class="form-group row">
                             <label for="image_path" class="col-md-4 col-form-label text-md-right">{{ __('Imagen') }}</label>
                             <div class="col-md-6">
-                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" required autocomplete="image_path" accept="image/*">
+                                <input id="image_path" type="file" class="form-control @error('image_path') is-invalid @enderror" name="image_path" autocomplete="image_path" accept="image/*">
                                 @error('image_path')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
