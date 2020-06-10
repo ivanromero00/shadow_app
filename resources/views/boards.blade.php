@@ -11,6 +11,8 @@
                 <h4 class="lcolordark mt-1 col-md-3 col-sm-12">{{$group->name}}  >  Tableros</h4>
                 <div class="col-md-7"></div>
                 <a class="btn btn-primary mb-3 col-md-2 col-sm-3" href=" {{ action('BoardController@create', ['id' => $group->id]) }}" role="button">Nuevo tablero</a>
+                @php $flag = true
+                @endphp
                 @break
             @else
                 {{$flag = False}}
