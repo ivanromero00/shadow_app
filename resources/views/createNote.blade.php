@@ -6,6 +6,7 @@
         <form method="POST" action="{{ action('NoteController@save') }}" enctype="multipart/form-data">
             @csrf
             <input type="hidden" name="id" value="{{ $board->id }}">
+            <input type="hidden" name="group" value="{{ $board->group_id }}">
             <div class="form-group">
                 <label for="title">Titulo</label>
                 <input name='title' type="text" class="form-control" id="title" aria-describedby="title">
